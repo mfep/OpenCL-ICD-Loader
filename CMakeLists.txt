@@ -57,12 +57,6 @@ cmake_dependent_option(ENABLE_OPENCL_LAYERINFO "Enable building cllayerinfo tool
 
 include(GNUInstallDirs)
 
-if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-  set(INSTALL_LIBDIR ${CMAKE_INSTALL_LIBDIR})
-else()
-  set(INSTALL_LIBDIR ${CMAKE_INSTALL_LIBDIR}/x86_64-linux-gnu)
-endif()
-
 set (CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 include(CheckFunctionExists)
 include(JoinPaths)
