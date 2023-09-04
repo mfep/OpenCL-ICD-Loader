@@ -226,7 +226,7 @@ install(
   TARGETS OpenCL
   EXPORT OpenCLICDLoaderTargets
   LIBRARY
-  DESTINATION ${INSTALL_LIBDIR} # obtained from GNUInstallDirs
+  DESTINATION ${CMAKE_INSTALL_LIBDIR} # obtained from GNUInstallDirs
 )
 install(
 # FILES $<TARGET_PDB_FILE:OpenCL> is cleanest, but is MSVC link.exe specific. LLVM's lld.exe and lld-link.exe don't support it (configure-time error)
@@ -286,12 +286,12 @@ install(
 # Separate namelink from shared library and symlink for DEB packaging
 install (TARGETS OpenCL
     LIBRARY
-      DESTINATION ${INSTALL_LIBDIR}
+      DESTINATION ${CMAKE_INSTALL_LIBDIR}
     COMPONENT runtime
     NAMELINK_SKIP)
 
 install (TARGETS OpenCL
     LIBRARY
-      DESTINATION ${INSTALL_LIBDIR}
+      DESTINATION ${CMAKE_INSTALL_LIBDIR}
     COMPONENT dev
     NAMELINK_ONLY)

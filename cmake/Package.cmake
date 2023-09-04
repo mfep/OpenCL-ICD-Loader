@@ -103,9 +103,9 @@ if (NOT CMAKE_SCRIPT_MODE_FILE) # Don't run in script mode
 # And another for the Debian development package, which contains CPACK_PACKAGING_INSTALL_PREFIX as prefix
 
 join_paths(OPENCL_INCLUDEDIR_PC "\${prefix}" "${CMAKE_INSTALL_INCLUDEDIR}")
-join_paths(OPENCL_LIBDIR_PC "\${exec_prefix}" "${INSTALL_LIBDIR}")
+join_paths(OPENCL_LIBDIR_PC "\${exec_prefix}" "${CMAKE_INSTALL_LIBDIR}")
 
-set(pkg_config_location ${INSTALL_LIBDIR}/pkgconfig)
+set(pkg_config_location ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
 set(PKGCONFIG_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
 # Configure and install OpenCL.pc for installing the project
