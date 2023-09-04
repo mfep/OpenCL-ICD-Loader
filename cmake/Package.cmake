@@ -1,25 +1,22 @@
 set(CPACK_PACKAGE_VENDOR "khronos")
 
-set(CPACK_DEBIAN_RUNTIME_DESCRIPTION "Generic OpenCL ICD Loader
- OpenCL (Open Computing Language) is a multivendor open standard for
- general-purpose parallel programming of heterogeneous systems that include
- CPUs, GPUs and other processors.
- .
- This package contains an installable client driver loader (ICD Loader)
- library that can be used to load any (free or non-free) installable client
- driver (ICD) for OpenCL. It acts as a demultiplexer so several ICD can
- be installed and used together.")
+set(CPACK_DEBIAN_RUNTIME_DESCRIPTION "Generic OpenCL ICD Loader \
+OpenCL (Open Computing Language) is a multivendor open standard for \
+general-purpose parallel programming of heterogeneous systems that include \
+CPUs, GPUs and other processors. \
+This package contains an installable client driver loader (ICD Loader) \
+library that can be used to load any (free or non-free) installable client \
+driver (ICD) for OpenCL. It acts as a demultiplexer so several ICD can \
+be installed and used together.")
 
-set(CPACK_DEBIAN_DEV_DESCRIPTION "OpenCL development files
- OpenCL (Open Computing Language) is a multivendor open standard for
- general-purpose parallel programming of heterogeneous systems that include
- CPUs, GPUs and other processors.
- .
- This package provides the development files: headers and libraries.
- .
- It also ensures that the ocl-icd ICD loader is installed so its additional
- features (compared to the OpenCL norm) can be used: .pc file, ability to
- select an ICD without root privilege, etc.")
+set(CPACK_DEBIAN_DEV_DESCRIPTION "OpenCL development files \
+OpenCL (Open Computing Language) is a multivendor open standard for \
+general-purpose parallel programming of heterogeneous systems that include \
+CPUs, GPUs and other processors. \
+This package provides the development files: headers and libraries. \
+It also ensures that the ocl-icd ICD loader is installed so its additional \
+features (compared to the OpenCL norm) can be used: .pc file, ability to \
+select an ICD without root privilege, etc.")
 
 set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE")
 
