@@ -47,6 +47,8 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}")
 # Package.cmake contains all details for packaging
 include(Package)
 
+string(REPLACE "\n" "\n " CPACK_DEBIAN_DEV_DESCRIPTION "${CPACK_DEBIAN_DEV_DESCRIPTION}")
+string(REPLACE "\n" "\n " CPACK_DEBIAN_RUNTIME_DESCRIPTION "${CPACK_DEBIAN_RUNTIME_DESCRIPTION}")
 set(DEB_SOURCE_PKG_DIR "${CMAKE_CURRENT_LIST_DIR}/../debian")
 # Write debian/control
 file(WRITE "${DEB_SOURCE_PKG_DIR}/control"
