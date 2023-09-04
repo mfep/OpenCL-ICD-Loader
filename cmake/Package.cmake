@@ -86,8 +86,7 @@ set(CPACK_DEBIAN_DEV_FILE_NAME "${CPACK_DEBIAN_DEV_PACKAGE_NAME}_${PACKAGE_VERSI
 
 # Dependencies
 set(CPACK_DEBIAN_ENABLE_COMPONENT_DEPENDS ON) # Component dependencies are reflected in package relationships
-set(CPACK_DEBIAN_DEV_PACKAGE_DEPENDS
-"opencl-c-headers (>= ${CPACK_DEBIAN_PACKAGE_VERSION}) | opencl-headers (>= {CPACK_DEBIAN_PACKAGE_VERSION}), opencl-clhpp-headers (>= ${CPACK_DEBIAN_PACKAGE_VERSION}) | opencl-headers (>= {CPACK_DEBIAN_PACKAGE_VERSION})")
+set(CPACK_DEBIAN_DEV_PACKAGE_DEPENDS "opencl-c-headers (>= ${CPACK_DEBIAN_PACKAGE_VERSION}) | opencl-headers (>= ${CPACK_DEBIAN_PACKAGE_VERSION})")
 set(CPACK_DEBIAN_DEV_PACKAGE_RECOMMENDS "libgl1-mesa-dev | libgl-dev")
 set(CPACK_DEBIAN_DEV_PACKAGE_CONFLICTS "opencl-dev")
 set(CPACK_DEBIAN_DEV_PACKAGE_BREAKS "amd-libopencl1 (<< 1:13.4-4~), nvidia-libopencl1 (<< 305~), ocl-icd-libopencl1 (<< ${CPACK_DEBIAN_PACKAGE_VERSION})")
