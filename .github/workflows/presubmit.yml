@@ -90,7 +90,7 @@ jobs:
       CC: ${{matrix.C_COMPILER}}
       CFLAGS: -Wall -Wextra -Werror -pedantic -m${{matrix.BIN}}
       DEB_INSTALLATION_PATH: /usr
-      INSTALL_LIBDIR: lib/x86_64-linux-gnu
+      INSTALL_LIBDIR: lib
 
     steps:
     - name: Install system CMake
@@ -110,7 +110,7 @@ jobs:
         path: external/OpenCL-Headers
         # ToDo: Change to KhronosGroup/OpenCL-Headers:main
         repository: StreamHPC/OpenCL-Headers
-        ref: update-ci
+        ref: release-cd
 
     - name: Configure, install & package OpenCL-Headers
       shell: bash
