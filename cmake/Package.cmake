@@ -63,6 +63,8 @@ set(CPACK_DEB_COMPONENT_INSTALL ON)
 set(CPACK_COMPONENTS_ALL runtime dev)
 
 set(DEBIAN_FILE_NAME "ocl-icd")
+set(CPACK_DEBIAN_DEV_PACKAGE_SECTION "libdevel")
+set(CPACK_DEBIAN_RUNTIME_PACKAGE_SECTION "lib")
 
 ## Package runtime component
 set(DEBIAN_RUNTIME_PACKAGE_SUFIX "libopencl1")
