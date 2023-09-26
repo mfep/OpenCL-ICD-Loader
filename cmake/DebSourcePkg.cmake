@@ -60,7 +60,7 @@ file(WRITE "${DEB_SOURCE_PKG_DIR}/control"
 Section: ${CPACK_DEBIAN_DEV_PACKAGE_SECTION}
 Priority: optional
 Maintainer: ${DEBIAN_PACKAGE_MAINTAINER}
-Build-Depends: cmake, debhelper-compat (=13)
+Build-Depends: cmake, debhelper-compat (=13), opencl-c-headers
 Rules-Requires-Root: no
 Homepage: ${CPACK_DEBIAN_PACKAGE_HOMEPAGE}
 Standards-Version: 4.6.2
