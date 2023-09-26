@@ -46,7 +46,10 @@ if(DEFINED BUILD_SHARED_LIBS)
 else()
   set(OPENCL_ICD_LOADER_BUILD_SHARED_LIBS_DEFAULT ON)
 endif()
-  option(OPENCL_ICD_LOADER_BUILD_SHARED_LIBS "Build OpenCL ICD Loader as shared library" ${OPENCL_ICD_LOADER_BUILD_SHARED_LIBS_DEFAULT})
+option(OPENCL_ICD_LOADER_BUILD_SHARED_LIBS "Build OpenCL ICD Loader as shared library" ${OPENCL_ICD_LOADER_BUILD_SHARED_LIBS_DEFAULT})
+option(OPENCL_ICD_LOADER_OPENCL_LIBNAME 
+  "Controls if the built library's name is libOpenCL.so (ON) or libKhronosOpenCLICDLoader.so (OFF)
+  The latter can be useful, when a link named libOpenCL.so is provided a different way, e.g. with the alternatives system." ON)
 
 # This option enables/disables support for OpenCL layers in the ICD loader.
 # It is currently needed default while the specification is being formalized,
@@ -122,6 +125,9 @@ endif()
 add_library (OpenCL::OpenCL ALIAS OpenCL)
 
 set_target_properties (OpenCL PROPERTIES VERSION 1\.0\.0 SOVERSION "1")
+if (NOT OPENCL_ICD_LOADER_OPENCL_LIBNAME)
+  set_target_properties (OpenCL PROPERTIES OUTPUT_NAME "KhronosOpenCLICDLoader")
+endif()
 
 if (WIN32)
     target_link_libraries (OpenCL PRIVATE cfgmgr32.lib runtimeobject.lib)
@@ -239,7 +245,6 @@ install(
 if (ENABLE_OPENCL_LAYERINFO)
   install(
     TARGETS cllayerinfo
-    EXPORT OpenCLICDLoaderTargets
     RUNTIME
       DESTINATION ${CMAKE_INSTALL_BINDIR}
     COMPONENT cllayerinfo

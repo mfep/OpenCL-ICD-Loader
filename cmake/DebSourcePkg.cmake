@@ -112,7 +112,7 @@ file(WRITE "${DEB_SOURCE_PKG_DIR}/rules"
 \tdh $@
 
 override_dh_auto_configure:
-\tdh_auto_configure -- -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF
+\tdh_auto_configure -- -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -DOPENCL_ICD_LOADER_OPENCL_LIBNAME=OFF
 ")
 file(WRITE "${DEB_SOURCE_PKG_DIR}/${CPACK_DEBIAN_DEV_PACKAGE_NAME}.install"
 "usr/lib/*/pkgconfig
@@ -121,6 +121,39 @@ usr/share
 ")
 file(WRITE "${DEB_SOURCE_PKG_DIR}/${CPACK_DEBIAN_RUNTIME_PACKAGE_NAME}.install"
 "usr/lib/*/lib*.so.*
+")
+file(WRITE "${DEB_SOURCE_PKG_DIR}/${CPACK_DEBIAN_RUNTIME_PACKAGE_NAME}.postinst.in"
+"
+#!/bin/sh
+
+set -e
+
+update-alternatives --install /usr/lib/@DEB_HOST_MULTIARCH@/libOpenCL.so.1.0.0 \
+                    libOpenCL.so.1.0.0-@DEB_HOST_MULTIARCH@ \
+                    /usr/lib/@DEB_HOST_MULTIARCH@/libKhronosOpenCLICDLoader.so.1.0.0 \
+                    --slave /usr/lib/@DEB_HOST_MULTIARCH@/libOpenCL.so.1 \
+                    libOpenCL.so.1-@DEB_HOST_MULTIARCH@ \
+                    /usr/lib/@DEB_HOST_MULTIARCH@/libOpenCL.so.1
+
+#DEBHELPER#
+
+exit 0
+")
+file(WRITE "${DEB_SOURCE_PKG_DIR}/${CPACK_DEBIAN_RUNTIME_PACKAGE_NAME}.prerm.in"
+"
+#!/bin/sh
+
+set -e
+
+if [[ \"$1\" != \"upgrade\" ]];
+then
+    update-alternatives --remove libOpenCL.so.1.0.0-@DEB_HOST_MULTIARCH@ \
+                        /usr/lib/@DEB_HOST_MULTIARCH@/libKhronosOpenCLICDLoader.so.1.0.0
+fi
+
+#DEBHELPER#
+
+exit 0
 ")
 file(WRITE "${DEB_SOURCE_PKG_DIR}/${CPACK_DEBIAN_CLLAYERINFO_PACKAGE_NAME}.install"
 "usr/bin
