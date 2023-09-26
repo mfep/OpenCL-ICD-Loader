@@ -8,6 +8,11 @@ include("${CMAKE_CURRENT_LIST_DIR}/PackageSetup.cmake")
 
 join_paths(OPENCL_INCLUDEDIR_PC "\${prefix}" "${CMAKE_INSTALL_INCLUDEDIR}")
 join_paths(OPENCL_LIBDIR_PC "\${exec_prefix}" "${CMAKE_INSTALL_LIBDIR}")
+if(OPENCL_ICD_LOADER_OPENCL_LIBNAME)
+  set(OPENCL_LIBNAME "OpenCL")
+else()
+  set(OPENCL_LIBNAME "KhronosOpenCLICDLoader")
+endif()
 
 set(pkg_config_location ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
 set(PKGCONFIG_PREFIX "${CMAKE_INSTALL_PREFIX}")

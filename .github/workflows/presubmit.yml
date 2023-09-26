@@ -206,7 +206,12 @@ jobs:
         then
           exit 1;
         fi &&
-        pkg-config OpenCL --libs | grep -q "\-lOpenCL"
+        if [[ "${{matrix.OPENCL_ICD_LOADER_OPENCL_LIBNAME}}" == "ON" ]];
+        then
+          pkg-config OpenCL --libs | grep -q "\-lOpenCL"
+        else
+          pkg-config OpenCL --libs | grep -q "\-lKhronosOpenCLICDLoader"
+        fi
 
     - name: Test cllayerinfo (DEB)
       run: cllayerinfo
@@ -248,7 +253,12 @@ jobs:
       # We expect no pre-processor and compile flags (--cflags) but we do expect link flags (--libs)
       run: export PKG_CONFIG_PATH="$GITHUB_WORKSPACE/install/lib/pkgconfig:$GITHUB_WORKSPACE/external/OpenCL-Headers/install/share/pkgconfig" &&
         pkg-config OpenCL --cflags | grep -q "\-I$GITHUB_WORKSPACE/external/OpenCL-Headers/install/include" &&
-        pkg-config OpenCL --libs | grep -q "\-L$GITHUB_WORKSPACE/install/lib \-lOpenCL"
+        if [[ "${{matrix.OPENCL_ICD_LOADER_OPENCL_LIBNAME}}" == "ON" ]];
+        then
+          pkg-config OpenCL --libs | grep -q "\-L$GITHUB_WORKSPACE/install/lib \-lOpenCL"
+        else
+          pkg-config OpenCL --libs | grep -q "\-L$GITHUB_WORKSPACE/install/lib \-lKhronosOpenCLICDLoader"
+        fi
 
   windows:
     if: false
