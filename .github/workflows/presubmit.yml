@@ -208,9 +208,9 @@ jobs:
         fi &&
         if [[ "${{matrix.OPENCL_ICD_LOADER_OPENCL_LIBNAME}}" == "ON" ]];
         then
-          pkg-config OpenCL --libs | grep -q "\-lOpenCL"
+          pkg-config OpenCL --libs | grep -q "\-lOpenCL";
         else
-          pkg-config OpenCL --libs | grep -q "\-lKhronosOpenCLICDLoader"
+          pkg-config OpenCL --libs | grep -q "\-lKhronosOpenCLICDLoader";
         fi
 
     - name: Test cllayerinfo (DEB)
