@@ -113,6 +113,15 @@ file(WRITE "${DEB_SOURCE_PKG_DIR}/rules"
 
 override_dh_auto_configure:
 \tdh_auto_configure -- -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -DOPENCL_ICD_LOADER_OPENCL_LIBNAME=OFF
+
+
+GENERATED_MAINTAINER_SCRIPTS := $(patsubst %.in,%,$(wildcard debian/*.postinst.in debian/*.prerm.in))
+
+$(GENERATED_MAINTAINER_SCRIPTS): %: %.in
+\tsed \"s%@DEB_HOST_MULTIARCH@%$(DEB_HOST_MULTIARCH)%g\" < $< > $@
+
+execute_before_dh_install: $(GENERATED_MAINTAINER_SCRIPTS)
+	true # An empty rule would confuse dh
 ")
 file(WRITE "${DEB_SOURCE_PKG_DIR}/${CPACK_DEBIAN_DEV_PACKAGE_NAME}.install"
 "usr/lib/*/pkgconfig
