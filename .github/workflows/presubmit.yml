@@ -255,9 +255,9 @@ jobs:
         pkg-config OpenCL --cflags | grep -q "\-I$GITHUB_WORKSPACE/external/OpenCL-Headers/install/include" &&
         if [[ "${{matrix.OPENCL_ICD_LOADER_OPENCL_LIBNAME}}" == "ON" ]];
         then
-          pkg-config OpenCL --libs | grep -q "\-L$GITHUB_WORKSPACE/install/lib \-lOpenCL"
+          pkg-config OpenCL --libs | grep -q "\-L$GITHUB_WORKSPACE/install/lib \-lOpenCL";
         else
-          pkg-config OpenCL --libs | grep -q "\-L$GITHUB_WORKSPACE/install/lib \-lKhronosOpenCLICDLoader"
+          pkg-config OpenCL --libs | grep -q "\-L$GITHUB_WORKSPACE/install/lib \-lKhronosOpenCLICDLoader";
         fi
 
   windows:
