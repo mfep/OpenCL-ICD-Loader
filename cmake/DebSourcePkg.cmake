@@ -140,6 +140,7 @@ set -e
 update-alternatives --install /usr/lib/@DEB_HOST_MULTIARCH@/libOpenCL.so.1.0.0 \
                     libOpenCL.so.1.0.0-@DEB_HOST_MULTIARCH@ \
                     /usr/lib/@DEB_HOST_MULTIARCH@/libKhronosOpenCLICDLoader.so.1.0.0 \
+                    100 \
                     --slave /usr/lib/@DEB_HOST_MULTIARCH@/libOpenCL.so.1 \
                     libOpenCL.so.1-@DEB_HOST_MULTIARCH@ \
                     /usr/lib/@DEB_HOST_MULTIARCH@/libOpenCL.so.1
