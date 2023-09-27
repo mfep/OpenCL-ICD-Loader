@@ -131,11 +131,11 @@ file(WRITE "${DEB_SOURCE_PKG_DIR}/${CPACK_DEBIAN_RUNTIME_PACKAGE_NAME}.install"
 "usr/lib/*/lib*.so.* usr/lib/\${DEB_HOST_MULTIARCH}/KhronosOpenCLICDLoader
 ")
 file(WRITE "${DEB_SOURCE_PKG_DIR}/${CPACK_DEBIAN_RUNTIME_PACKAGE_NAME}.alternatives"
-"Name: libOpenCL.so.1.0.0-\${DEB_HOST_MULTIARCH}
-Link: /usr/lib/\${DEB_HOST_MULTIARCH}/libOpenCL.so.1.0.0
-Alternative: /usr/lib/\${DEB_HOST_MULTIARCH}/KhronosOpenCLICDLoader/libOpenCL.so.1.0.0
+"Name: libOpenCL.so.1.0.0-x86_64-linux-gnu
+Link: /usr/lib/x86_64-linux-gnu/libOpenCL.so.1.0.0
+Alternative: /usr/lib/x86_64-linux-gnu/KhronosOpenCLICDLoader/libOpenCL.so.1.0.0
 Dependents:
-  /usr/lib/\${DEB_HOST_MULTIARCH}/libOpenCL.so.1 libOpenCL.so.1-\${DEB_HOST_MULTIARCH} /usr/lib/\${DEB_HOST_MULTIARCH}/KhronosOpenCLICDLoader/libOpenCL.so.1
+  /usr/lib/x86_64-linux-gnu/libOpenCL.so.1 libOpenCL.so.1-x86_64-linux-gnu /usr/lib/x86_64-linux-gnu/KhronosOpenCLICDLoader/libOpenCL.so.1
 Priority: 100
 ")
 file(WRITE "${DEB_SOURCE_PKG_DIR}/${CPACK_DEBIAN_CLLAYERINFO_PACKAGE_NAME}.install"
